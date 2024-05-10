@@ -2,7 +2,7 @@ package me.crazyg.crazypixel;
 
 import me.crazyg.crazypixel.Commands.GodCommand;
 import me.crazyg.crazypixel.Commands.KillCommand;
-import me.crazyg.crazypixel.Commands.MenuCommand;
+import me.crazyg.crazypixel.Commands.CiCommand;
 import me.crazyg.crazypixel.Commands.RepeatCommand;
 import me.crazyg.crazypixel.Listeners.onJoinleaveListener;
 import org.bukkit.ChatColor;
@@ -31,7 +31,7 @@ public final class Crazypixel extends JavaPlugin {
         getCommand("kill").setExecutor(new KillCommand());
         getCommand("god").setExecutor(new GodCommand());
         getCommand("repeat").setExecutor(new RepeatCommand());
-        getCommand("menu").setExecutor(new MenuCommand());
+        getCommand("ci").setExecutor(new CiCommand());
         // Listeners
         getServer().getPluginManager().registerEvents((Listener) new onJoinleaveListener(this), (Plugin) this);
         //config.yml

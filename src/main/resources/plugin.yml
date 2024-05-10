@@ -26,3 +26,9 @@ commands:
     usage: /<command> <word>
     aliases:
       - sayitagain
+  ci:
+    description: gives a custom item
+    permission: everything.ci
+    usage: /<command>
+    aliases:
+      - customitems

@@ -13,12 +13,12 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MenuCommand implements CommandExecutor {
+public class CiCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player p){
             ItemStack flower = new ItemStack(Material.FLOWERING_AZALEA, 2);
-            p.getInventory().setItem(1, flower);
+            p.getInventory().addItem(flower);
 
             ItemStack food = new ItemStack(Material.BEEF, 16);
             ItemMeta foodMeta = food.getItemMeta();

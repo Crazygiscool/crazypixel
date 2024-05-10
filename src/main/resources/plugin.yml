@@ -1,0 +1,28 @@
+name: crazypixel
+version: '${project.version}'
+main: me.crazyg.crazypixel.Crazypixel
+api-version: '1.20'
+prefix: [crazycore]
+authors: [Crazyg]
+description: a core for crazyg and his servers
+website: crazypixel.vercel.app
+commands:
+  god:
+    description: MAKE YOU/OTHERS LIKE "HIM"
+    permission: everything.god
+    usage: /<command> <player>
+    aliases:
+      - invulnerable
+  kill:
+    description: kills yourself/others
+    permission: everything.kill
+    usage: /<command> <player>
+    aliases:
+      - ihatethisworld
+      - suicide
+  repeat:
+    description: REPEAT WHAT YOU SAID
+    permission: everything.repeat
+    usage: /<command> <word>
+    aliases:
+      - sayitagain

@@ -9,26 +9,32 @@ website: crazypixel.vercel.app
 commands:
   god:
     description: MAKE YOU/OTHERS LIKE "HIM"
-    permission: everything.god
+    permission: crazypixel.god
     usage: /<command> <player>
     aliases:
       - invulnerable
   kill:
     description: kills yourself/others
-    permission: everything.kill
+    permission: crazypixel.kill
     usage: /<command> <player>
     aliases:
       - ihatethisworld
       - suicide
   repeat:
     description: REPEAT WHAT YOU SAID
-    permission: everything.repeat
+    permission: crazypixel.repeat
     usage: /<command> <word>
     aliases:
       - sayitagain
   ci:
     description: gives a custom item
-    permission: everything.ci
+    permission: crazypixel.ci
     usage: /<command>
     aliases:
       - customitems
+  menu:
+    description: custom menu
+    permission: crazypixel.menu
+    usage: /<command>
+    aliases:
+      - gui

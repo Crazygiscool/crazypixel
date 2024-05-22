@@ -1,6 +1,7 @@
 package me.crazyg.crazypixel.Listeners;
 
 
+import me.crazyg.crazypixel.Crazypixel;
 import me.crazyg.crazypixel.utils.bowUtils;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -14,6 +15,14 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
 public class teleportBowListener implements Listener {
+
+    private final Crazypixel plugin;
+    private final bowUtils bowUtils;
+
+    public teleportBowListener(Crazypixel plugin, me.crazyg.crazypixel.utils.bowUtils bowUtils) {
+        this.plugin = plugin;
+        this.bowUtils = bowUtils;
+    }
 
     @EventHandler
     public void onArrowLand(ProjectileHitEvent e) {
@@ -39,7 +48,7 @@ public class teleportBowListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent e){
 
-        if (true){
+        if (plugin.getConfig().getBoolean("give-on-join")){
             Player p = e.getPlayer();
             p.getInventory().addItem(bowUtils.createTeleportBow());
             p.getInventory().addItem(new ItemStack(Material.BOW, 1));

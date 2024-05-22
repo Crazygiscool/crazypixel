@@ -33,11 +33,11 @@ public final class Crazypixel extends JavaPlugin {
         getCommand("repeat").setExecutor(new RepeatCommand());
         getCommand("ci").setExecutor(new CiCommand());
         getCommand("menu").setExecutor(new MenuCommand());
-        getCommand("givebow").setExecutor(new GiveBowCommand());
+        getCommand("givebow").setExecutor(new GiveBowCommand(this));
         // Listeners
         getServer().getPluginManager().registerEvents((Listener) new onJoinleaveListener(this), (Plugin) this);
         getServer().getPluginManager().registerEvents((Listener) new MenuListener(), (Plugin) this);
-        getServer().getPluginManager().registerEvents((Listener) new teleportBowListener(), (Plugin) this);
+        getServer().getPluginManager().registerEvents((Listener) new teleportBowListener(this), (Plugin) this);
         //config.yml
         getConfig().options().copyDefaults();
         saveDefaultConfig();

@@ -1,5 +1,6 @@
 package me.crazyg.crazypixel.Commands;
 
+import me.crazyg.crazypixel.Crazypixel;
 import me.crazyg.crazypixel.utils.bowUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -11,6 +12,15 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 public class GiveBowCommand implements CommandExecutor {
+
+    private final Crazypixel plugin;
+    private final bowUtils bowUtils;
+
+    public GiveBowCommand(Crazypixel plugin) {
+        this.plugin = plugin;
+        this.bowUtils = new bowUtils(plugin);
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player p) {
@@ -32,7 +42,7 @@ public class GiveBowCommand implements CommandExecutor {
                     target.getInventory().addItem(bow);
                     target.getInventory().addItem(new ItemStack(Material.ARROW, 1));
 
-                    target.sendMessage(ChatColor.GREEN + "You have been given a teleport bow!");
+                    target.sendMessage(plugin.getConfig().getString("teleport-message"));
 
                 }
 

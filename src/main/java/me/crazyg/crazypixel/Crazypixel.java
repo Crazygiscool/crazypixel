@@ -3,6 +3,7 @@ package me.crazyg.crazypixel;
 import me.crazyg.crazypixel.Commands.*;
 import me.crazyg.crazypixel.Listeners.MenuListener;
 import me.crazyg.crazypixel.Listeners.onJoinleaveListener;
+import me.crazyg.crazypixel.Listeners.teleportBowListener;
 import org.bukkit.ChatColor;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
@@ -13,10 +14,11 @@ import java.util.logging.Logger;
 
 public final class Crazypixel extends JavaPlugin {
     private Logger log = this.getLogger();
+
     @Override
     public void onEnable() {
         // Plugin startup logic
-        log.info("Plugin Made By "+ ChatColor.DARK_AQUA+"Crazyg");
+        log.info("Plugin Made By " + ChatColor.DARK_AQUA + "Crazyg");
         log.info("Thanks for using the plugin");
         log.info("\n" +
                 "░█████╗░██████╗░░█████╗░███████╗██╗░░░██╗██████╗░██╗██╗░░██╗███████╗██╗░░░░░\n" +
@@ -31,9 +33,11 @@ public final class Crazypixel extends JavaPlugin {
         getCommand("repeat").setExecutor(new RepeatCommand());
         getCommand("ci").setExecutor(new CiCommand());
         getCommand("menu").setExecutor(new MenuCommand());
+        getCommand("givebow").setExecutor(new GiveBowCommand());
         // Listeners
         getServer().getPluginManager().registerEvents((Listener) new onJoinleaveListener(this), (Plugin) this);
         getServer().getPluginManager().registerEvents((Listener) new MenuListener(), (Plugin) this);
+        getServer().getPluginManager().registerEvents((Listener) new teleportBowListener(), (Plugin) this);
         //config.yml
         getConfig().options().copyDefaults();
         saveDefaultConfig();

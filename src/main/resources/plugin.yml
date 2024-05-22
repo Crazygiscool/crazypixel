@@ -2,8 +2,8 @@ name: crazypixel
 version: '${project.version}'
 main: me.crazyg.crazypixel.Crazypixel
 api-version: '1.20'
-prefix: [crazycore]
-authors: [Crazyg]
+prefix: [ crazycore ]
+authors: [ Crazyg ]
 description: a core for crazyg and his servers
 website: crazypixel.vercel.app
 commands:
@@ -38,3 +38,10 @@ commands:
     usage: /<command>
     aliases:
       - gui
+  givebow:
+    description: gives you your teleport bow
+    permission: crazypixel.giveteleportbow
+    usage: /<command> <playername>
+    aliases:
+      - givetpbow
+      - tpbow

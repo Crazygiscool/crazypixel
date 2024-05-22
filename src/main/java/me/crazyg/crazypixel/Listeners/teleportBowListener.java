@@ -6,7 +6,6 @@ import me.crazyg.crazypixel.utils.bowUtils;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.Sound;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,7 +18,7 @@ public class teleportBowListener implements Listener {
     private final Crazypixel plugin;
     private final bowUtils bowUtils;
 
-    public teleportBowListener(Crazypixel plugin, me.crazyg.crazypixel.utils.bowUtils bowUtils) {
+    public teleportBowListener(Crazypixel plugin) {
         this.plugin = plugin;
         this.bowUtils = bowUtils;
     }

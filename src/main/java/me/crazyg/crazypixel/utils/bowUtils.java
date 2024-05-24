@@ -1,6 +1,7 @@
 package me.crazyg.crazypixel.utils;
 
 import me.crazyg.crazypixel.Crazypixel;
+import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
@@ -20,9 +21,9 @@ public class bowUtils {
     public ItemStack createTeleportBow() {
         ItemStack bow = new ItemStack(Material.BOW, 1);
         ItemMeta bowMeta = bow.getItemMeta();
-        bowMeta.setDisplayName(plugin.getConfig().getString("bow-name"));
+        bowMeta.setDisplayName(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("bow-name")));
         List<String> lore = new ArrayList<>();
-        lore.add(plugin.getConfig().getString("bow-descryption"));
+        lore.add(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("bow-descryption")));
         bowMeta.setLore(lore);
         bowMeta.addEnchant(Enchantment.ARROW_INFINITE, 1, false);
         bow.setItemMeta(bowMeta);

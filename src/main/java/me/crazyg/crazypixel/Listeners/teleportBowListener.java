@@ -29,7 +29,7 @@ public class teleportBowListener implements Listener {
         if ((e.getEntity().getShooter() instanceof Player p)) {
             ItemStack mainHandItem = p.getInventory().getItemInMainHand();
 
-            if (mainHandItem.getItemMeta().getDisplayName().equalsIgnoreCase("Teleport Bow")){
+            if (mainHandItem.getItemMeta().getDisplayName().equalsIgnoreCase(plugin.getConfig().getString("bow-name"))){
 
                 Location location = e.getEntity().getLocation();
 

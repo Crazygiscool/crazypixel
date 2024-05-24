@@ -6,5 +6,5 @@ leave-message: "&b&l%player%&r &bHas Lefted"
 ##teleport bow plugin messages
 give-on-join: true
 bow-name: '&f[&eTeleport&aBow&f]'
-bow-descryption: '&6 Shoot and teleport anywhere'
+bow-descryption: '&6Shoot and teleport anywhere'
 teleport-message: '&aSwoosh!'

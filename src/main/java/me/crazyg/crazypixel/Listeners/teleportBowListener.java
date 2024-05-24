@@ -20,7 +20,7 @@ public class teleportBowListener implements Listener {
 
     public teleportBowListener(Crazypixel plugin) {
         this.plugin = plugin;
-        this.bowUtils = bowUtils;
+        this.bowUtils = new bowUtils(plugin);
     }
 
     @EventHandler

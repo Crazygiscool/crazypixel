@@ -45,3 +45,10 @@ commands:
     aliases:
       - givetpbow
       - tpbow
+  armorstand:
+    description: : create a armor stand
+    permission: crazypixel.armorstand
+    usage: /<command>
+    aliases:
+      - ASGUI
+      - armorstandgui

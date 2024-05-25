@@ -40,6 +40,11 @@ public class menuListener implements Listener {
             }
 
             e.setCancelled(true);
+            if(e.getView().getTopInventory().equals(MAIN_MENU) && e.getClick().isShiftClick()){
+
+                e.setCancelled(true);
+
+            }
         } else if (e.getView().getTitle().equalsIgnoreCase(CREATE_MENU)) {
             switch (e.getCurrentItem().getType()){
                 case ARMOR_STAND:
@@ -60,6 +65,11 @@ public class menuListener implements Listener {
                     break;
             }
             e.setCancelled(true);
+            if(e.getView().getTopInventory().equals(MAIN_MENU) && e.getClick().isShiftClick()){
+
+                e.setCancelled(true);
+
+            }
         }
     }
 }

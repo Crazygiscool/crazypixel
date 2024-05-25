@@ -28,6 +28,6 @@ public class armorStandCommand implements CommandExecutor {
         if (sender instanceof Player p){
             plugin.openMainMenu(p);
         }
-        return false;
+        return true;
     }
 }

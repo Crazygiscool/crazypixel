@@ -14,20 +14,21 @@ public class menuListener implements Listener {
     public menuListener(Crazypixel plugin) {
         this.plugin = plugin;
     }
+
     @EventHandler
-    public void onMenuClick(InventoryClickEvent e){
+    public void onMenuClick(InventoryClickEvent e) {
 
         Player player = (Player) e.getWhoClicked();
 
         //Menu list
-        final String MAIN_MENU = ChatColor.BLUE+"AS GUI";
-        final String CREATE_MENU = ChatColor.GREEN+"Create a armor stand";
-        final String CONFIRM_MENU = ChatColor.DARK_GREEN+"Confirm your options";
+        final String MAIN_MENU = ChatColor.BLUE + "AS GUI";
+        final String CREATE_MENU = ChatColor.GREEN + "Create a armor stand";
+        final String CONFIRM_MENU = ChatColor.DARK_GREEN + "Confirm your options";
 
         //Determine which inventory is open
-        if (e.getView().getTitle().equalsIgnoreCase(MAIN_MENU)){
+        if (e.getView().getTitle().equalsIgnoreCase(MAIN_MENU)) {
             //Figure out what button was clicked
-            switch(e.getCurrentItem().getType()){
+            switch (e.getCurrentItem().getType()) {
                 case ARMOR_STAND:
                     player.sendMessage("Opened Armor Stand Create Menu");
                     //Open the menu for creating an armor stand
@@ -40,13 +41,13 @@ public class menuListener implements Listener {
             }
 
             e.setCancelled(true);
-            if(e.getView().getTopInventory().equals(MAIN_MENU) && e.getClick().isShiftClick()){
+            if (e.getView().getTopInventory().equals(MAIN_MENU) && e.getClick().isShiftClick()) {
 
                 e.setCancelled(true);
 
             }
         } else if (e.getView().getTitle().equalsIgnoreCase(CREATE_MENU)) {
-            switch (e.getCurrentItem().getType()){
+            switch (e.getCurrentItem().getType()) {
                 case ARMOR_STAND:
                     player.sendMessage("AddArms?");
                     plugin.openConfirmMenu(player, Material.ARMOR_STAND);
@@ -65,10 +66,20 @@ public class menuListener implements Listener {
                     break;
             }
             e.setCancelled(true);
-            if(e.getView().getTopInventory().equals(MAIN_MENU) && e.getClick().isShiftClick()){
+            if (e.getView().getTopInventory().equals(MAIN_MENU) && e.getClick().isShiftClick()) {
 
                 e.setCancelled(true);
 
+            }
+        } else if (e.getView().getTitle().equalsIgnoreCase(CONFIRM_MENU)) {
+            switch (e.getCurrentItem().getType()) {
+                case GREEN_WOOL:
+                    player.sendMessage("option confimed");
+                    plugin.openCreatmenu(player);
+                case RED_WOOL:
+                    player.sendMessage("Option cancelled");
+                    plugin.openCreatmenu(player);
+                    e.setCancelled(true);
             }
         }
     }

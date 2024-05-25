@@ -2,6 +2,7 @@ package me.crazyg.crazypixel.events;
 
 import me.crazyg.crazypixel.Crazypixel;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,6 +21,8 @@ public class menuListener implements Listener {
 
         //Menu list
         final String MAIN_MENU = ChatColor.BLUE+"AS GUI";
+        final String CREATE_MENU = ChatColor.GREEN+"Create a armor stand";
+        final String CONFIRM_MENU = ChatColor.DARK_GREEN+"Confirm your options";
 
         //Determine which inventory is open
         if (e.getView().getTitle().equalsIgnoreCase(MAIN_MENU)){
@@ -28,6 +31,7 @@ public class menuListener implements Listener {
                 case ARMOR_STAND:
                     player.sendMessage("Opened Armor Stand Create Menu");
                     //Open the menu for creating an armor stand
+                    plugin.openCreatmenu(player);
                     break;
                 case BARRIER:
                     player.sendMessage("Closing Menu.");
@@ -35,6 +39,26 @@ public class menuListener implements Listener {
                     break;
             }
 
+            e.setCancelled(true);
+        } else if (e.getView().getTitle().equalsIgnoreCase(CREATE_MENU)) {
+            switch (e.getCurrentItem().getType()){
+                case ARMOR_STAND:
+                    player.sendMessage("AddArms?");
+                    plugin.openConfirmMenu(player, Material.ARMOR_STAND);
+                    break;
+                case BEACON:
+                    player.sendMessage("AddGlow?");
+                    plugin.openConfirmMenu(player, Material.BEACON);
+                    break;
+                case NETHERITE_CHESTPLATE:
+                    player.sendMessage("ARMOR?");
+                    //armor select gui
+                    break;
+                case SMOOTH_STONE_SLAB:
+                    player.sendMessage("baseVisible?");
+                    plugin.openConfirmMenu(player, Material.SMOOTH_STONE_SLAB);
+                    break;
+            }
             e.setCancelled(true);
         }
     }

@@ -1,4 +1,4 @@
-package me.crazyg.crazypixel.Listeners;
+package me.crazyg.crazypixel.events;
 
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -6,7 +6,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 
-public class MenuListener implements Listener {
+public class ciMenuListener implements Listener {
     @EventHandler
     public void onInventoryClick(InventoryClickEvent e){
 

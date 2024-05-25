@@ -1,4 +1,4 @@
-package me.crazyg.crazypixel.Listeners;
+package me.crazyg.crazypixel.events;
 
 import me.crazyg.crazypixel.Crazypixel;
 import org.bukkit.ChatColor;

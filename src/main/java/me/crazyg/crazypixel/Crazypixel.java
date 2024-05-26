@@ -1,6 +1,7 @@
 package me.crazyg.crazypixel;
 
 import me.crazyg.crazypixel.Commands.*;
+import me.crazyg.crazypixel.config.spawnConfig;
 import me.crazyg.crazypixel.events.ciMenuListener;
 import me.crazyg.crazypixel.events.menuListener;
 import me.crazyg.crazypixel.events.onJoinleaveListener;
@@ -9,19 +10,19 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.ArmorStand;
-import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.RecipeChoice;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Optional;
 import java.util.logging.Logger;
+
 
 
 public final class Crazypixel extends JavaPlugin {
@@ -49,7 +50,8 @@ public final class Crazypixel extends JavaPlugin {
         getCommand("menu").setExecutor(new MenuCommand());
         getCommand("givebow").setExecutor(new GiveBowCommand(this));
         getCommand("armorstand").setExecutor(new armorStandCommand(this));
-        // Listeners
+        getCommand("hologram").setExecutor(new hologramCommand());
+        // Event Listeners
         getServer().getPluginManager().registerEvents((Listener) new onJoinleaveListener(this), (Plugin) this);
         getServer().getPluginManager().registerEvents((Listener) new ciMenuListener(), (Plugin) this);
         getServer().getPluginManager().registerEvents((Listener) new teleportBowListener(this), (Plugin) this);
@@ -57,6 +59,10 @@ public final class Crazypixel extends JavaPlugin {
         //config.yml
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+        //spawn.yml
+        spawnConfig.setup();
+        spawnConfig.get().options().copyDefaults(true);
+        spawnConfig.save();
     }
     // main menu for armor stand
     public void openMainMenu(Player p){

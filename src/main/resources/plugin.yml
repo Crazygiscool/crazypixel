@@ -46,10 +46,16 @@ commands:
       - givetpbow
       - tpbow
   armorstand:
-    description: : create a armor stand
+    description: create a armor stand
     permission: crazypixel.armorstand
     usage: /<command>
     aliases:
       - ASGUI
       - armorstandgui
       - as
+  hologram:
+    description: create a hologram
+    permission: crazypixel.hologram
+    usage: /<command>
+    aliases:
+      - hg

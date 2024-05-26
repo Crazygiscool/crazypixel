@@ -51,6 +51,7 @@ public final class Crazypixel extends JavaPlugin {
         getCommand("givebow").setExecutor(new GiveBowCommand(this));
         getCommand("armorstand").setExecutor(new armorStandCommand(this));
         getCommand("hologram").setExecutor(new hologramCommand());
+        getCommand("setspawn").setExecutor(new setSpawnCommand());
         // Event Listeners
         getServer().getPluginManager().registerEvents((Listener) new onJoinleaveListener(this), (Plugin) this);
         getServer().getPluginManager().registerEvents((Listener) new ciMenuListener(), (Plugin) this);

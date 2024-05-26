@@ -8,8 +8,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class spawnConfig {
-    private static File file;
-    private static FileConfiguration spawnConfig;
+    public static File file;
+    public static FileConfiguration spawnConfig;
     //finds or generates the file.
     public static void setup(){
         file = new File(Bukkit.getServer().getPluginManager().getPlugin("Crazypixel").getDataFolder(), "spawn.yml");

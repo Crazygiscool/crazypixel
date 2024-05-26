@@ -50,7 +50,8 @@ public class teleportBowListener implements Listener {
         if (plugin.getConfig().getBoolean("give-on-join")){
             Player p = e.getPlayer();
             p.getInventory().addItem(bowUtils.createTeleportBow());
-            p.getInventory().addItem(new ItemStack(Material.BOW, 1));
+            p.getInventory().addItem(new ItemStack(Material.ARROW, 1));
+
         }
 
     }

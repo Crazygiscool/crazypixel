@@ -50,8 +50,7 @@ commands:
     permission: crazypixel.armorstand
     usage: /<command>
     aliases:
-      - ASGUI
-      - armorstandgui
+      - asgui
       - as
   hologram:
     description: create a hologram
@@ -59,3 +58,7 @@ commands:
     usage: /<command>
     aliases:
       - hg
+  setspawn:
+    description: set the server spawn
+    permission: crazypixel.setspawn
+    usage: /<command>

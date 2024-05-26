@@ -9,6 +9,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
+import org.checkerframework.checker.units.qual.A;
 
 public class menuListener implements Listener {
     Crazypixel plugin;
@@ -26,6 +28,7 @@ public class menuListener implements Listener {
         final String MAIN_MENU = ChatColor.BLUE + "AS GUI";
         final String CREATE_MENU = ChatColor.GREEN + "Create a armor stand";
         final String CONFIRM_MENU = ChatColor.DARK_GREEN + "Confirm your options";
+        final String ARMOR_MENU = ChatColor.BLUE+"Change some armor";
 
         //Determine which inventory is open
         if (e.getView().getTitle().equalsIgnoreCase(MAIN_MENU)) {
@@ -43,11 +46,6 @@ public class menuListener implements Listener {
             }
 
             e.setCancelled(true);
-            if (e.getView().getTopInventory().equals(MAIN_MENU) && e.getClick().isShiftClick()) {
-
-                e.setCancelled(true);
-
-            }
         } else if (e.getView().getTitle().equalsIgnoreCase(CREATE_MENU)) {
 
             if (!plugin.armorstands.containsKey(player)){
@@ -68,6 +66,7 @@ public class menuListener implements Listener {
                 case NETHERITE_CHESTPLATE:
                     player.sendMessage("ARMOR?");
                     //armor select gui
+                    plugin.openArmorMenu(player);
                     break;
                 case SMOOTH_STONE_SLAB:
                     player.sendMessage("baseVisible?");
@@ -93,11 +92,6 @@ public class menuListener implements Listener {
                     break;
             }
             e.setCancelled(true);
-            if (e.getView().getTopInventory().equals(MAIN_MENU) && e.getClick().isShiftClick()) {
-
-                e.setCancelled(true);
-
-            }
         } else if (e.getView().getTitle().equalsIgnoreCase(CONFIRM_MENU)) {
             if (e.getClickedInventory().contains(Material.ARMOR_STAND)){
                 switch (e.getCurrentItem().getType()) {
@@ -155,6 +149,25 @@ public class menuListener implements Listener {
                             }
                             plugin.openCreatmenu(player);
                             break;
+                }
+            }else if (e.getView().getTitle().equalsIgnoreCase(ARMOR_MENU)){
+                if (!plugin.armorstands.containsKey(player)){
+                    ArmorStand stand = plugin.armorstands.get(player);
+                    switch (e.getCurrentItem().getType()){
+                        case DIAMOND_HELMET:
+                            if (stand.getHelmet().getType() == Material.DIAMOND_HELMET){
+                                stand.setHelmet(null);
+                                player.sendMessage("REMOVED");
+                            }else{
+                                stand.setHelmet(new ItemStack(Material.DIAMOND_HELMET));
+                                player.sendMessage("ADDED");
+                            }
+                            break;
+                        case GREEN_WOOL:
+                            player.sendMessage("Armor Saved");
+                            plugin.openCreatmenu(player);
+                    }
+                    e.setCancelled(true);
                 }
             }
         }

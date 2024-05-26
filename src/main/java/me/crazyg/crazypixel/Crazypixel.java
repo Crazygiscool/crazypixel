@@ -144,6 +144,25 @@ public final class Crazypixel extends JavaPlugin {
         p.openInventory(confirm_Menu);
     }
 
+    public void openArmorMenu(Player p){
+        Inventory armor_menu = Bukkit.createInventory(p, 45, ChatColor.BLUE+"Change some armor");
+        //options for armor
+        ItemStack dimhead = new ItemStack(Material.DIAMOND_HELMET);
+
+        //confirm button
+        ItemStack confirm = new ItemStack(Material.GREEN_WOOL);
+        ItemMeta confirm_meta = confirm.getItemMeta();
+        confirm_meta.setDisplayName(ChatColor.GREEN+"Done");
+        confirm.setItemMeta(confirm_meta);
+
+        //slots for the item
+        armor_menu.setItem(45, confirm);
+        armor_menu.setItem(1,dimhead);
+
+        //open the gui
+        p.openInventory(armor_menu);
+    }
+
     @Override
     public void onDisable() {
         // Plugin shutdown logic

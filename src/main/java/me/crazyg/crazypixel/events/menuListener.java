@@ -3,6 +3,8 @@ package me.crazyg.crazypixel.events;
 import me.crazyg.crazypixel.Crazypixel;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.ArmorStand;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -47,6 +49,13 @@ public class menuListener implements Listener {
 
             }
         } else if (e.getView().getTitle().equalsIgnoreCase(CREATE_MENU)) {
+
+            if (!plugin.armorstands.containsKey(player)){
+                ArmorStand stand = (ArmorStand) player.getWorld().spawnEntity(player.getLocation(), EntityType.ARMOR_STAND);
+                plugin.armorstands.put(player, stand);
+                stand.setVisible(false);
+            }
+
             switch (e.getCurrentItem().getType()) {
                 case ARMOR_STAND:
                     player.sendMessage("AddArms?");
@@ -64,6 +73,24 @@ public class menuListener implements Listener {
                     player.sendMessage("baseVisible?");
                     plugin.openConfirmMenu(player, Material.SMOOTH_STONE_SLAB);
                     break;
+                case GREEN_WOOL:
+                    player.sendMessage("Created Armor Stand");
+                    if (!plugin.armorstands.containsKey(player)){
+                        ArmorStand stand = plugin.armorstands.get(player);
+                        stand.setVisible(true);
+                        plugin.armorstands.remove(player);
+                    }
+                    player.closeInventory();
+                    break;
+                case RED_WOOL:
+                    player.sendMessage("Armor Stand Deleted");
+                    if (!plugin.armorstands.containsKey(player)){
+                        ArmorStand stand = plugin.armorstands.get(player);
+                        stand.remove();
+                        plugin.armorstands.remove(player);
+                    }
+                    player.closeInventory();
+                    break;
             }
             e.setCancelled(true);
             if (e.getView().getTopInventory().equals(MAIN_MENU) && e.getClick().isShiftClick()) {
@@ -72,14 +99,63 @@ public class menuListener implements Listener {
 
             }
         } else if (e.getView().getTitle().equalsIgnoreCase(CONFIRM_MENU)) {
-            switch (e.getCurrentItem().getType()) {
-                case GREEN_WOOL:
-                    player.sendMessage("option confimed");
-                    plugin.openCreatmenu(player);
-                case RED_WOOL:
-                    player.sendMessage("Option cancelled");
-                    plugin.openCreatmenu(player);
-                    e.setCancelled(true);
+            if (e.getClickedInventory().contains(Material.ARMOR_STAND)){
+                switch (e.getCurrentItem().getType()) {
+                    case GREEN_WOOL:
+                        player.sendMessage("option confimed");
+                        if (!plugin.armorstands.containsKey(player)) {
+                            ArmorStand stand = plugin.armorstands.get(player);
+                            stand.setArms(true);
+                        }
+                        plugin.openCreatmenu(player);
+                        break;
+                    case RED_WOOL:
+                        player.sendMessage("Option cancelled");
+                        if (!plugin.armorstands.containsKey(player)) {
+                            ArmorStand stand = plugin.armorstands.get(player);
+                            stand.setArms(false);
+                        }
+                        plugin.openCreatmenu(player);
+                        break;
+                }
+            }else if (e.getClickedInventory().contains(Material.BEACON)){
+                    switch (e.getCurrentItem().getType()) {
+                        case GREEN_WOOL:
+                            player.sendMessage("option confimed");
+                            if (!plugin.armorstands.containsKey(player)) {
+                                ArmorStand stand = plugin.armorstands.get(player);
+                                stand.setGlowing(true);
+                            }
+                            plugin.openCreatmenu(player);
+                            break;
+                        case RED_WOOL:
+                            player.sendMessage("Option cancelled");
+                            if (!plugin.armorstands.containsKey(player)) {
+                                ArmorStand stand = plugin.armorstands.get(player);
+                                stand.setGlowing(false);
+                            }
+                            plugin.openCreatmenu(player);
+                            break;
+                    }
+            }else if (e.getClickedInventory().contains(Material.SMOOTH_STONE_SLAB)){
+                    switch (e.getCurrentItem().getType()) {
+                        case GREEN_WOOL:
+                            player.sendMessage("option confimed");
+                            if (!plugin.armorstands.containsKey(player)){
+                                ArmorStand stand = plugin.armorstands.get(player);
+                                stand.setBasePlate(true);
+                            }
+                            plugin.openCreatmenu(player);
+                            break;
+                        case RED_WOOL:
+                            player.sendMessage("Option cancelled");
+                            if (!plugin.armorstands.containsKey(player)){
+                                ArmorStand stand = plugin.armorstands.get(player);
+                                stand.setBasePlate(false);
+                            }
+                            plugin.openCreatmenu(player);
+                            break;
+                }
             }
         }
     }

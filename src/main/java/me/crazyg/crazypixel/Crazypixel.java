@@ -8,6 +8,7 @@ import me.crazyg.crazypixel.events.teleportBowListener;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Item;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
@@ -19,13 +20,15 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Logger;
 
 
 public final class Crazypixel extends JavaPlugin {
 
     private Logger log = this.getLogger();
-
+    //armor stand hash map
+    public HashMap<Player , ArmorStand> armorstands = new HashMap<>();
     @Override
     public void onEnable() {
         // Plugin startup logic
